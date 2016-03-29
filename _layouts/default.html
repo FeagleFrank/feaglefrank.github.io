@@ -4,20 +4,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEAGLE_BLOG</title>
 	<link href="{{site.baseurl}}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{site.baseurl}}/css/blog.css" rel="stylesheet">
 	<style>
-    body {
-    padding-top: 50px;
-    padding-left: 50px;
-    }
+    
     </style>
 	<script src="{{site.baseurl}}/js/jquery-2.1.1.min.js"></script>
 	<script src="{{site.baseurl}}/js/bootstrap.min.js"></script>
-	<!--[if lt IE 9]>
-      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<div class="navbar navbar-fixed-top navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,10 +21,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
 			</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="#">FEAGLE_BLOG</a>
 			</div>
 			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="#"><span class="glyphicon glyphicon-home">Home</span></a></li>
 					<li><a href="#about"><span class="glyphicon glyphicon-info-sign">About</span></a></li>
 				</ul>
@@ -37,8 +32,8 @@
 		</div>
 	</div>
 
-	<div style="padding-top:200px">
+
    {{content }}
-   <div>
+
    </body>
 <html>

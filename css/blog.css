@@ -1,0 +1,14 @@
+.intro-header{
+	background: #808080 url('../image/bg.jpg') no-repeat center center;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	margin-bottom: 0px;
+}
+
+.site-heading {
+	margin: 150px 0;
+	font-size:20px;
+	text-align:center;
+}
