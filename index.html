@@ -1,9 +1,9 @@
+--- 
+layout: default 
 ---
-layout: default
----
-<header class="intro-header jumbotron" >
-	<div class="container">
-		 <div class="row">
+<header class="intro-header jumbotron">
+    <div class="container">
+        <div class="row">
             <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-8 col-xs-offset-4 ">
                 <div class="site-heading">
                     <h1>CrazyEnter</h1>
@@ -11,13 +11,30 @@ layout: default
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </header>
-<h1>Hello World</h1>
-<p>Index page</p>
-<p>Post list:</p>
-<ul>
-	{% for post in site.posts %}
-		<li><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></li>
-	{% endfor %}
-</ul>
+
+<div class="container">
+    <div class="row">
+        <div class=" col-lg-7 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 postlist-container">
+            {% for post in site.posts %}
+            <div class=" post ">
+                <h2 class="post_title ">
+                    <a href="{{post.url}} ">{{post.title}}</a>
+                </h2>
+                <h4 class="post_subtitle">
+                    {{post.subtitle}}
+                </h4>
+                <div class="post_preview">
+                    {{ post.content | strip_html | truncate:200 }}
+                </div>
+                <h7><a href="{{post.url}} ">More..</a><span style="float:right;color:#C0BEBE">Posted on {{post.date | date:"%d %b , %Y"}}</span></h7>
+            </div>
+            <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+

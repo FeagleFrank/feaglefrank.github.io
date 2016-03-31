@@ -8,7 +8,17 @@
 }
 
 .site-heading {
-	margin: 150px 0;
+	margin: 140px 0;
 	font-size:20px;
 	text-align:center;
+	color:#333;
+}
+
+.post_subtitle {
+    margin-left:30px;
+}
+
+.post_preview {
+    font-size: 13px;
+    color: #7C7B7B;
 }
