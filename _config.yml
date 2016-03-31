@@ -1,0 +1,7 @@
+baseurl: /
+encoding: utf-8
+url: "http://feaglefrank.github.io/"
+markdown: kramdown
+kramdown:
+  input:  GFM
+  use_coderay: true
