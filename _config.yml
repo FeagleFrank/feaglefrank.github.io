@@ -2,3 +2,5 @@ encoding: utf-8
 markdown: kramdown
 kramdown:
   input:  GFM
+paginate: 10
+paginate_path: "page:num"
