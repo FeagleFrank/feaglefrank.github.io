@@ -14,5 +14,27 @@ layout: default
     </div>
 </header>
 
+<div class="container">
+    <div class="row">
+        <div class=" col-lg-7 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 postlist-container">
+            {% for post in site.posts %}
+            <div class=" post ">
+                <h2 class="post_title ">
+                    <a href="{{post.url}} ">{{post.title}}</a>
+                </h2>
+                <h4 class="post_subtitle">
+                    {{post.subtitle}}
+                </h4>
+                <div class="post_preview">
+                    {{ post.content | strip_html | truncate:200 }}
+                </div>
+                <h7><a href="{{post.url}} ">More..</a><span style="float:right;color:#C0BEBE">Posted on {{post.date | date:"%d %b , %Y"}}</span></h7>
+            </div>
+            <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
 
 
