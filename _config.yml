@@ -1,7 +1,5 @@
 encoding: utf-8
 markdown: kramdown
-safe: true
-auto: false
-url: 
+gems: [jekyll-paginate]
 paginate: 10
 paginate_path: "page:num"

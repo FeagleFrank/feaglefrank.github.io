@@ -1,24 +1,63 @@
-.intro-header{
+.index-header{
 	background: #808080 url('../image/bg.jpg') no-repeat center center;
-	background-attachment: scroll;
+    background-attachment: scroll;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
-	margin-bottom: 0px;
 }
 
-.site-heading {
+
+.index-heading {
 	margin: 140px 0;
-	font-size:20px;
 	text-align:center;
 	color:#333;
 }
 
-.post_subtitle {
+.index-subheading {
+    font-size: 22px;
+}
+@media (max-width: 768px) {
+    .index-subheading {
+        font-size: 15px;
+    }
+}
+
+.index-post-subtitle {
     margin-left:30px;
 }
 
-.post_preview {
+.index-post-preview {
     font-size: 13px;
     color: #7C7B7B;
+}
+
+.sidebar {
+    
+}
+
+.sidebar-aboutme {
+    text-align: center;
+}
+
+.sidebar-aboutme img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.post-header {
+    background: #808080 url('../image/postbg.jpg') no-repeat center center;
+    background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+}
+
+.post-heading {
+	margin-top: 140px;
+    margin-bottom: 120px;
+	font-size:20px;
+	color:#F8F8F8;
+    line-height: 50px;
 }
