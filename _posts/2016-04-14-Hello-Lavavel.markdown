@@ -8,7 +8,8 @@ subtitle: "初识PHP Laravel框架"
 
 ## 安装 #
 
-#### 安装apache、php、mysql，之前已经安装过了，所以略过
+#### 安装apache、php、mysql
+之前已经安装过了，所以略过
 
 #### 安装mcrypt、openssl扩展
 {% highlight shell %}
