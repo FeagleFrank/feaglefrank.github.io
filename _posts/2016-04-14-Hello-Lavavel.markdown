@@ -68,6 +68,101 @@ php artisan migrate
 {% highlight shell %}
 php artisan make:model project
 {% endhighlight %}
-生成的文件在`/app`目录下，该model`project`会自动对应表`projects`
+生成的文件在`/app`目录下，该model`project`会自动对
+应表`projects`
 
->未完待续...
+## 路由
+
+#### 路由配置
+路由的配置在`/app/HTTP/routes.php`中，打开后看到默认有一条路由信息
+{% highlight php %}
+Route::get('/', function () {
+    return view('welcome');
+});
+{% endhighlight %}
+以Get方式访问根目录，返回welcome视图，get可以替换为post、delete或者any等等，我在配置路由时还遇到了一个问题，路由配置如下：
+{% highlight php %}
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/mis', function () {
+    return 'Hello';
+});
+{% endhighlight %}
+我访问 `http://host/ts`时（ts为项目目录），可正常看到welcome视图，而当我访问`http://host/ts/mis`时，却是404，起初还以为还是apache rewrite的问题，调了很久还是不行，后来才发现，Laravel是以`/server.php`文件为入口，指向`/public/index.php`，而我的apache的根目录设置的是该Laravel项目的根目录，一般将根目录设置为`/public`就不会出现该问题，或者也可直接访问为`http://host/ts/server.php/mis`
+
+#### 路由组
+路由组主要是用来组合路由，同意添加命名空间、中间件等功能的，实现如下
+{% highlight php %}
+Route::group(['prefix'=>'mis','namespace'=>'mis'],function(){
+    Route::get('/','misController@index');
+    Route::post('/addProject','misController@addProject');
+});
+{% endhighlight %}
+其中Route方法的第二个参数为misController指定的控制器，@之后的为该控制器的方法
+
+## Controller
+Controller为MVC架构中的C——控制器，使用命令生成控制器：
+{% highlight shell %}
+php artisan make:controller mis/misController
+});
+{% endhighlight %}
+生成的文件在/app/HTTP/Controllers下，添加方法
+{% highlight php %}
+<?php
+
+namespace App\Http\Controllers\mis;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Project;
+use Illuminate\Support\Facades\Input;
+
+class misController extends Controller
+{
+   public function index(){
+       return view('mis/index');
+   }
+    
+    public function addProject(Request $request){
+        $project = new Project;
+        $project->name = Input::get('name');
+        $project->save();
+    }
+}
+{% endhighlight %}
+
+## View
+View为MVC中的V——视图层，目录在`\resources\views`。Laravel的View采用了Blade的模板引擎，你可以写个layout
+{% highlight html %}
+<!DOCTYPE HTML>
+<html>
+    <head>
+    
+    </head>
+    <body>
+        @yield('content')
+    </body>
+</html>
+{% endhighlight %}
+使用以下方式使用该模板
+{% highlight html %}
+@extends('layouts.mis')
+
+@section('content')
+
+<div>
+    <form action="{{ URL('mis/addProject') }}" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="text" name="name">
+        <button type="submit">AddProject</button>
+    </form>
+    
+</div>
+{% endhighlight %}
+其中`<input type="hidden" name="_token" value="{{ csrf_token() }}">`是为防止CSRF跨站请求伪造，如果不加这一句，提交表单时会报错，或者也可将Laravel的CSRF token禁用，当然，不建议这么做
+
+## 总结
+这就是搭建Laravel框架的基本过程，我也是初学者，没有学得很深奥。将来遇到一些问题、心得，也会分享给大家
