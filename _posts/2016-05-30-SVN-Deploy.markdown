@@ -16,7 +16,9 @@ svnadmin create xxx
 {% endhighlight %}
 
 ## 配置 ##
+
 #### ```\conf\svnserve.conf``` ####
+
 取消以下四条的注释
 {% highlight shell %}
 password-db = passwd.conf（确定密码存储文件）
@@ -26,7 +28,9 @@ authz-db = authz.conf（权限配置文件）
 {% endhighlight %}
 
 #### ```\conf\authz.conf``` ####
+
 ##### 配置用户组
+
 {% highlight shell %}
 [group]
 group1 = person1,person2,person3
@@ -34,6 +38,7 @@ group2 = person4,person5
 {% endhighlight %}
 
 ##### 配置目录权限
+
 {% highlight shell %}
 [/]
 * = r     #这一条一定要放在下一条之上，不然会报错
