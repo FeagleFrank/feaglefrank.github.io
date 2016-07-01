@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Ubuntu下搭建SVN服务器"
+category: Others
 ---
 
 由于工作需要，需要在一台Ubuntu机器上搭建SVN服务器，看了网上的教程，感觉写得都有点乱。现在搞定之后总结一下

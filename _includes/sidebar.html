@@ -7,9 +7,9 @@
     <hr>
     <div class="sidebar-category">
         <div class="btn-group-vertical btn-block">
-            <button type="button" class="btn btn-default">iOS</button>
-            <button type="button" class="btn btn-default">PHP</button>
-            <button type="button" class="btn btn-default">随笔</button>
+            {% for category in site.categories %}
+                <button type="button" class="btn btn-default" onclick="window.location.href='/category'">{{ category | first }}    ({{ category | last | size }})</button>
+            {% endfor %}
         </div>
     </div>
 </div>

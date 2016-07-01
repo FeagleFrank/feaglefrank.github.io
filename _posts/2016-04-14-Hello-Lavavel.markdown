@@ -2,6 +2,7 @@
 layout: post
 title: "Hello Laravel"
 subtitle: "初识PHP Laravel框架"
+category: PHP
 ---
 
 前段时间在学习PHP，最近准备写个较大的项目练练手，准备选择使用一种PHP框架，考虑再三，选择了目前比较火的Laravel框架。一开始是在Windows上来进行配置，但使用过程中出现了各种奇怪的问题，于是果断放弃Windows转战Ubuntu，安装配置过程较为顺利
@@ -9,7 +10,7 @@ subtitle: "初识PHP Laravel框架"
 ## 安装 #
 
 #### 安装apache、php、mysql
-之前已经安装过了，所以略过
+>之前已经安装过了，所以略过
 
 #### 安装mcrypt、openssl扩展
 {% highlight shell %}

@@ -1,3 +1,17 @@
+.navbar{
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.navbar.is-visible{
+    transform: translate(0,-100%);
+    -webkit-transform: translate(0,-100%);
+    -moz-transform: translate(0,-100%);
+    -ms-transform: translate(0,-100%);
+    -o-transform: translate(0,-100%);
+}
+
 .index-header{
 	background: #808080 url('../image/bg.jpg') no-repeat center center;
     background-attachment: scroll;

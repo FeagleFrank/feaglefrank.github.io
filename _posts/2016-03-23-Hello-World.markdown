@@ -2,6 +2,7 @@
 layout: post
 title: "Hello World"
 subtitle: "Github Pages + Jekyll"
+category: Life
 ---
 
 ### 为什么要写博客 ###

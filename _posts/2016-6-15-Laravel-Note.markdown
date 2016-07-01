@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Laravel 笔记"
+category: PHP
 ---
 
 ## 编辑数据库 ##
