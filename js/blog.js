@@ -4,9 +4,9 @@ $(function(){
     },function(){
         var currentTop = $(window).scrollTop();
         if(currentTop > this.previousTop){
-            $('.navbar').addClass('is-visible');
+            $('.navbar').addClass('not-visible');
         } else {
-            $('.navbar').removeClass('is-visible');
+            $('.navbar').removeClass('not-visible');
         }
         if(currentTop < 80){
             $('.navbar').removeClass('navbar-inverse');
