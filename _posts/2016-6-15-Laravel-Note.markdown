@@ -47,3 +47,35 @@ php artisan view：clear
 
 清除目录```/storage/framwork/views```下的缓存视图
 暂时还未找到停止view cache的方法，试了stackoverflow上的几种方法，都没成功0.0
+
+============2016/7/31更新==============
+
+## 数据库连接错误 ##
+数据库连接时出现PDOEXCEPTION，如果配置未出现异常，连接的事MYSQL，可能是PHP缺少了PDO_MYSQL扩展
+
+此外，还出现过找不到表的情况，排查后发现是由于Laravel会大写表名的第一个字母，如果数据库大小写敏感，则会出现问题
+解决方法：
+找到MYSQL配置文件```/etc/mysql/my.conf```
+在[mysqlId]下添加如下代码
+{% highlight shell %}
+lower_case_table_names=1
+{% endhighlight %}
+
+## 数据库反向迁移 ##
+对于已存在的表，可以进行反向迁移，生成迁移文件
+使用了Laravel Migrations Generator，GITHUB地址```https://github.com/Xethron/migrations-generator```
+使用方法：
+{% highlight shell %}
+composer require --dev --no-update "xethron/migrations-generator:dev-l5"
+composer require --dev --no-update "way/generators:dev-feature/laravel-five-stable"
+composer config repositories.repo-name git "git@github.com:jamisonvalenta/Laravel-4-Generators.git"
+composer update
+{% endhighlight %}
+
+在```/config/app.php```添加provider：
+{% highlight shell %}
+Way\Generators\GeneratorsServiceProvider::class,
+Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+{% endhighlight %}
+
+然后使用命令```php artisan migrate:generate table```就可以进行反向迁移，生成迁移文件
