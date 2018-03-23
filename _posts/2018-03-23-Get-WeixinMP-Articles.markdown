@@ -84,5 +84,5 @@ def get_pdf(self, st, name):
 
 ## 结果 ##
 抓了一个公众号，近两百篇文章，运行正常
-完整代码可访问：
->https://github.com/FeagleFrank/WeixinMPArticles
+
+[完整代码可访问这里](https://github.com/FeagleFrank/WeixinMPArticles)
