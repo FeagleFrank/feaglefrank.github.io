@@ -4,18 +4,18 @@ title: "抓取微信某公众号所有文章"
 category: Python
 ---
 
-##思路 ##
+## 思路 ##
 先试了一下搜狗微信，发现无法查看该微信公众号的所有文章，因此考虑从微信PC/OS X版入手。
 
 通过抓包，找到了微信PC版客户端打开微信公众号历史文章的地址，以及向下滑动到底部后的Ajax请求地址，但使用改地址直接在浏览器中访问，提示“请使用微信客户端中打开”，猜测可能是用了```user-agent```或```cookie```来进行校验。仔细观察后发现，该页面是由另一个页面redirect过来的，经验证，先请求该地址，获取cookie后，即可正常访问。分析Ajax请求的Request，带了```offset```参数与```count```参数，```count=10```，尝试了一下更改发现不起作用，```offeset```更改后生效，在Response中带了这篇文章的```title```，```datetime```等属性，并且很惊喜地发现了```content_url```中存了文章地址，可以正常打开访问
 
-##实现 ##
+## 实现 ##
 使用WireShark或者Fiddler进行抓包，需要获取两个地址：
 公众号历史文章redirect前的地址，Like this：
->https://mp.weixin.qq.com/mp/getmasssendmsg?__biz=xxx==&uin=xxx&key=xxx&devicetype=xxx&version=xxx&lang=zh_CN&ascene=x&pass_ticket=xxx
+>https://mp.weixin.qq.com/mp/getmasssendmsg?xxx
 
 公众号历史文章页翻页Ajax请求地址，Like this：
->https://mp.weixin.qq.com/mp/profile_ext?action=getmsg&__biz=xxx==&f=json&offset=10&count=10&is_ok=1&scene=124&uin=xxx&pass_ticket=xxx&wxtoken=&appmsg_token=xxx&x5=0&f=json
+>https://mp.weixin.qq.com/mp/profile_ext?xxx
 
 使用urllib.request请求，并用cookieJar处理cookie，代码如下：
 {% highlight python%}
@@ -82,7 +82,7 @@ def get_pdf(self, st, name):
 {% endhighlight %}
 
 
-##结果 ##
+## 结果 ##
 抓了一个公众号，近两百篇文章，运行正常
 完整代码可访问：
 >https://github.com/FeagleFrank/WeixinMPArticles
